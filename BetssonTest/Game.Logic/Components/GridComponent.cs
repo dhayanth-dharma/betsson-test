@@ -12,6 +12,7 @@ namespace Game.Library.Components
         public int height{ get; private set; }
         
         /*
+         * Represents grid field with columnans and rows. 
           Args: Width, Height   
          */
         public GridComponent(int x, int y)
@@ -20,12 +21,11 @@ namespace Game.Library.Components
             height = x;
 
             grid_cells = new GridCell[x][];
-            for (int i = 0; i < x; i++)
-            {
+            for (int i = 0; i < x; i++){
                 grid_cells[i] = new GridCell[y];
-                for (int j = 0; j < y; j++)
-                {
-                    grid_cells[i][j] = new GridCell() { Position = new GridPoint{ X = i, Y = j } };
+                for (int j = 0; j < y; j++){
+                    //grid_cells[i][j] = new GridCell() { Position = new GridPoint{ X = i, Y = j } };                    
+                    grid_cells[i][j] = new GridCell() { Position = new GridPoint(i,  j ) };
                 }
             }
         }

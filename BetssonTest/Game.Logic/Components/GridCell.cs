@@ -8,7 +8,7 @@ namespace Game.Library.Components
     {   
         public GridPoint Position { get; set; }
     }
-     public struct GridPoint
+     public class GridPoint
      {
         public int X { get; set; }
         public int Y { get; set; }
