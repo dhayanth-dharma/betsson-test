@@ -14,7 +14,7 @@ namespace Game.Library.Components
         /*
          * Represents grid field with columnans and rows. 
           Args: Width, Height   
-         */
+         */ 
         public GridComponent(int x, int y)
         {
             width = y;

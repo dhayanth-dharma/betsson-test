@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Game.Library.Components.ComponentEnum;
+using Game.Library.Components.Enums;
+
 namespace Game.Library.Components
 {
     public class TurtleComponent : GridCell
@@ -18,58 +20,54 @@ namespace Game.Library.Components
         }
         #endregion
 
-        public Direction Direction { get; set; }
+        public Direction direction { get; set; }
 
-
-        public void MoveTurlte()
+        /*
+         MOVE TURTLE 
+         */
+        public void MoveTurlte( )
         {   
-            switch (Direction)
+            switch (direction)
             {
-                case Direction.North:
-                    //Printer.Print(_turtle.Position, new Point { X = _turtle.Position.X - 1, Y = _turtle.Position.Y });
-                    turtle.Position = new GridPoint { X = turtle.Position.X - 1, Y = turtle.Position.Y };
+                case Direction.N:
+                    turtle.Position = new GridPoint (turtle.Position.X - 1, turtle.Position.Y );
                     break;
-                case Direction.South:
-                    //Printer.Print(_turtle.Position, new Point { X = _turtle.Position.X + 1, Y = _turtle.Position.Y });
-                    turtle.Position = new GridPoint { X = turtle.Position.X + 1, Y = turtle.Position.Y };
+                case Direction.S:
+                    turtle.Position = new GridPoint ( turtle.Position.X + 1, turtle.Position.Y );
                     break;
-                case Direction.East:
-                    //Printer.Print(_turtle.Position, new Point { X = _turtle.Position.X, Y = _turtle.Position.Y + 1 });
-                    turtle.Position = new GridPoint { X = turtle.Position.X, Y = turtle.Position.Y + 1 };
+                case Direction.E:
+                    turtle.Position = new GridPoint ( turtle.Position.X, turtle.Position.Y + 1 );
                     break;
-                case Direction.West:
-                    //Printer.Print(_turtle.Position, new Point { X = _turtle.Position.X, Y = _turtle.Position.Y - 1 });
-                    turtle.Position = new GridPoint { X = turtle.Position.X, Y = turtle.Position.Y - 1 };
+                case Direction.W:
+                    turtle.Position = new GridPoint (turtle.Position.X, turtle.Position.Y - 1 );
                     break;
             }
         }
 
-        /// <summary>
-        /// rotate turtle
-        /// </summary>
-        public void RotateTurtle()
+        /*
+         TURN TURTLE 
+         */
+        public void RotateTurtle(Rotation rotate_direction)
         {
-            switch (Direction)
-            {
-                case Direction.North:
-                    Direction = Direction.East;
-                    //Printer.Print(Direction);
-                    break;
-                case Direction.South:
-                    Direction = Direction.West;
-                    //Printer.Print(Direction);
-                    break;
-                case Direction.East:
-                    Direction = Direction.South;
-                    //Printer.Print(Direction);
-                    break;
-                case Direction.West:
-                    Direction = Direction.North;
-                    //Printer.Print(Direction);
-                    break;
-                default:
-                    break;
-            }
+            if (direction == Direction.N && rotate_direction == Rotation.L)
+                direction = Direction.W;
+            else if (direction == Direction.N && rotate_direction == Rotation.R)
+                direction = Direction.E;
+
+            else if (direction == Direction.E && rotate_direction == Rotation.L)
+                direction = Direction.N;
+            else if (direction == Direction.E && rotate_direction == Rotation.R)
+                direction = Direction.S;
+
+            else if (direction == Direction.S && rotate_direction == Rotation.L)
+                direction = Direction.E;
+            else if (direction == Direction.S && rotate_direction == Rotation.R)
+                direction = Direction.W;
+
+            else if (direction == Direction.W && rotate_direction == Rotation.L)
+                direction = Direction.S;
+            else if (direction == Direction.W && rotate_direction == Rotation.R)
+                direction = Direction.N;
         }
     }
 }

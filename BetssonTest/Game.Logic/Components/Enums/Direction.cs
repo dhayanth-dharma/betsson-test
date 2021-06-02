@@ -6,9 +6,9 @@ namespace Game.Library.Components.ComponentEnum
 {
     public enum Direction
     {
-        North,
-        South,
-        East,
-        West
+        N,
+        S,
+        E,
+        W
     }
 }

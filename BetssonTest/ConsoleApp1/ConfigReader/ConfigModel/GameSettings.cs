@@ -12,20 +12,20 @@ namespace Game.Main.ConfigReader
         public GridPoint exit{ get; set; }
         public List<GridPoint> mines { get; set; } = new List<GridPoint>();
         public string start_direction { get; set; }
-        public string[] moves { get; set; }
+        public string[] instruction { get; set; }
 
         public GameSettings()
         {
 
         }
-        public GameSettings(GridPoint size, GridPoint start, GridPoint exit, List<GridPoint> mines, string direction, string[] moves)
+        public GameSettings(GridPoint size, GridPoint start, GridPoint exit, List<GridPoint> mines, string direction, string[] instruction)
         {
             this.size = size;
             this.start = start;
             this.exit = exit;
             this.mines = mines;
             this.start_direction = direction;
-            this.moves = moves;
+            this.instruction = instruction;
 
         }
     }

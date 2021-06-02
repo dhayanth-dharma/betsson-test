@@ -4,13 +4,14 @@ using System.Text;
 
 namespace Game.Library.Components.Enums
 {
-    public enum State
+    public enum TurtleStatus
     {
         IsDead,
         Normal,
-        IsOutOfBounds,
+        OutOfGrid,
         IsExit,
         IsDanger,
+        NearToMine,
         Success,
         MineHit, 
         StillInDanger

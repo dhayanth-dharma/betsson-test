@@ -6,7 +6,10 @@ namespace Game.Main
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Starting the game");
+            var game_initiated = GameInitiater.CreateNewGame();
+            game_initiated.Start();
+
         }
     }
 }
