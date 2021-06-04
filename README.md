@@ -38,7 +38,7 @@ This project demonstrates a turtle game.
 	* The fourth line of the file should contain the starting position of the turtle
 	* The fifth line to the end of the file should contain a series of moves.
 	* R = Rotate 90 degrees to the right, L = Rotate 90 degrees to the left, N = North direction, S = South direction, W = West direction, E = East direction, M = Move
- 3. Edit `PrintExtensionMethod.cs` function to for custom print messages. [Note: This method used as an extention method. Return _false_ when the game should end ]
+ 3. Edit `PrintExtensionMethod.cs` function to for custom print messages. [Note: This method used as an extention method. Return _True_ when the game should end ]
  3. Run the `Game.Main` project 
 
 ## Stack
