@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Game.Logic\TurtleEscape.Library.csproj" />
+    <ProjectReference Include="..\Game.Logic\Game.Library.csproj" />
   </ItemGroup>
 
   <ItemGroup>

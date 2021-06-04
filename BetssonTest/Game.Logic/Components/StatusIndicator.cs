@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace Game.Main
+namespace Game.Library.Components
 {
 
     /*

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Game.Library.Components.ComponentEnum
+namespace Game.Library.Components.Enums
 {
     public enum Direction
     {

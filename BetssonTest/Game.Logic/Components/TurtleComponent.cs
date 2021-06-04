@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Game.Library.Components.ComponentEnum;
 using Game.Library.Components.Enums;
 
 namespace Game.Library.Components
 {
     public class TurtleComponent : GridCell
     {
-        #region Singleton
         
         private static TurtleComponent turtle;
         private TurtleComponent(GridPoint position) { 
@@ -18,7 +16,10 @@ namespace Game.Library.Components
         {
             return turtle ?? (turtle = new TurtleComponent(position));
         }
-        #endregion
+        public static TurtleComponent GetInstance(GridPoint position)
+        {
+            return turtle ?? (turtle = new TurtleComponent(position));
+        }
 
         public Direction direction { get; set; }
 
@@ -69,5 +70,6 @@ namespace Game.Library.Components
             else if (direction == Direction.W && rotate_direction == Rotation.R)
                 direction = Direction.N;
         }
+
     }
 }

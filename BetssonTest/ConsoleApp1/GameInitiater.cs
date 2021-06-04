@@ -1,5 +1,5 @@
-﻿using Game.Library.Components;
-using Game.Library.Components.ComponentEnum;
+﻿
+using Game.Library.Components;
 using Game.Library.Components.Enums;
 using Game.Main.ConfigReader;
 using System;
