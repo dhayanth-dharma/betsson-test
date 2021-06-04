@@ -6,11 +6,8 @@ namespace Game.Library.Components.Enums
 {
     public enum TurtleStatus
     {
-        IsDead,
-        Normal,
+
         OutOfGrid,
-        IsExit,
-        IsDanger,
         NearToMine,
         Success,
         MineHit, 

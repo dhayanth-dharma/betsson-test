@@ -23,19 +23,12 @@ namespace Game.Library.Components
             grid_cells = new GridCell[x][];
             for (int i = 0; i < x; i++){
                 grid_cells[i] = new GridCell[y];
-                for (int j = 0; j < y; j++){
-                    //grid_cells[i][j] = new GridCell() { Position = new GridPoint{ X = i, Y = j } };                    
+                for (int j = 0; j < y; j++){               
                     grid_cells[i][j] = new GridCell() { Position = new GridPoint(i,  j ) };
                 }
             }
         }
         
-        //public GridCell this[int index1, int index2]
-        //{
-        //    get { return grid_cells[index1][index2]; }
-        //    set { grid_cells[index1][index2] = value; }
-        //}
-
         public GridCell this[GridPoint p]
         {
             get { return grid_cells[p.X][p.Y]; }

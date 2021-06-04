@@ -22,7 +22,7 @@ namespace Game.Main
             }
             else if (status == TurtleStatus.Success)
             {
-                Console.WriteLine("Turtle successfully reached the ");
+                Console.WriteLine("Turtle successfully reached the Exit point");
                 return true;
             
             }
