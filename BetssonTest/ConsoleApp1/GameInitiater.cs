@@ -37,86 +37,29 @@ namespace Game.Main
         }
 
 
-        public void Start()
+        public void Start(Func<TurtleStatus,Boolean> printer)
         {
 
             var instructions = game_settings.instruction;
             var turtle = grid[turtle_start_point] as TurtleComponent;
             System.Enum.TryParse<Direction>(game_settings.start_direction, out var dir);
             turtle.direction = dir;
+            bool break_loop = false;
             foreach (string instruction in instructions)
             {
-                //Each(instruction.Split(' ').ToList(), i => play_game(i, turtle));
                 foreach (string move in instruction.Split(' '))
                 {
                     if (move == "R") turtle.RotateTurtle(Rotation.R);
                     else if (move == "L") turtle.RotateTurtle(Rotation.L);
                     else if (move == "M") turtle.MoveTurlte();
                     var current_state = status_indicator.GetCurrentStatus(turtle.Position);
-
-                    if (current_state == TurtleStatus.MineHit)
-                    {
-                        Console.WriteLine("Turtle land on a mine");
-                        break;
-                    }
-                    else if (current_state == TurtleStatus.OutOfGrid)
-                    {
-                        Console.WriteLine("Turtle went out of grid");
-
-                    }
-                    else if (current_state == TurtleStatus.Success)
-                    {
-                        Console.WriteLine("Turtle successfully reached the ");
-                        break;
-                    }
-                    else if (current_state == TurtleStatus.NearToMine)
-                    {
-                        Console.WriteLine("Turtle is near to mine");
-                    }
-                    else if (current_state == TurtleStatus.StillInDanger)
-                    {
-                        Console.WriteLine("Turtle Still In Danger");
-                    }
+                    break_loop=printer(current_state);
+                    if (break_loop) break;
                 }
-            }
-
-        }
-        private void play_game(string instruction, TurtleComponent turtle)
-        {
-            if (instruction == "R") turtle.RotateTurtle(Rotation.R);
-            else if (instruction == "L") turtle.RotateTurtle(Rotation.L);
-            else if (instruction == "M") turtle.MoveTurlte();
-            var current_state = status_indicator.GetCurrentStatus(turtle.Position);
-
-            if (current_state == TurtleStatus.MineHit)
-            {
-                Console.WriteLine("Turtle land on a mine");
-            }
-            else if (current_state == TurtleStatus.OutOfGrid)
-            {
-                Console.WriteLine("Turtle went out of grid");
-
-            }
-            else if (current_state == TurtleStatus.Success)
-            {
-                Console.WriteLine("Turtle successfully reached the ");
-
-            }
-            else if (current_state == TurtleStatus.NearToMine)
-            {
-                Console.WriteLine("Turtle is near to mine");
-            }
-            else if (current_state == TurtleStatus.StillInDanger)
-            {
-                Console.WriteLine("Turtle Still In Danger");
+                if (break_loop) break;
             }
         }
 
-        public void Each<T>(IEnumerable<T> items, Action<T> action)
-        {
-            foreach (var item in items)
-                action(item);
-        }
 
         /*
          *Setup Mines in the grid
@@ -129,9 +72,11 @@ namespace Game.Main
                 {
                     grid[mine_position] = new MineComponent() { Position = mine_position };
                 }
-                catch
+                catch (Exception ex)
                 {
-                    throw new Exception("Mine creation error");
+                    if (ex is IndexOutOfRangeException)
+                        throw new IndexOutOfRangeException("Mine position is outside the grid");
+                    throw ex;
                 }
             }
         }
@@ -145,8 +90,13 @@ namespace Game.Main
             {
                 grid[exit_point] = new ExitComponent() { Position = exit_point };
             }
-            catch
-            {/*ignore*/}
+            catch (Exception ex)
+            {
+                if(ex is IndexOutOfRangeException)
+                    throw new IndexOutOfRangeException("Exit position is outside the grid");
+                throw ex;
+
+            }
         }
 
 
@@ -159,8 +109,12 @@ namespace Game.Main
             {
                 grid[turtlePosition] = TurtleComponent.Instance(turtlePosition);
             }
-            catch
-            {/*ignore*/}
+            catch (Exception ex)
+            {
+                if (ex is IndexOutOfRangeException)
+                    throw new IndexOutOfRangeException("Turtle position is outside the grid");
+                throw ex;
+            }
         }
     }
 }
