@@ -2,7 +2,7 @@
 
 ## About the Project
 
-This project demonstrate a Grid turtle game. 
+This project demonstrates a turtle game. 
 
 # Application overview 
  This solution consist of three main projects.  
